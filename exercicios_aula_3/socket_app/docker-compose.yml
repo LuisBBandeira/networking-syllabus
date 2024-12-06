@@ -1,0 +1,12 @@
+services:
+  server:
+    image: python:3.13-slim
+    command: python server/main.py
+    working_dir: /server
+    volumes:
+      - .:/server
+    ports:
+      - 545:545
+  
+  client:
+    image: busybox
