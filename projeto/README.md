@@ -19,10 +19,10 @@ This project is a simple Contact Management web application that allows users to
 
 ## Features
 
-- **View Contacts:** Display a list of all contacts.
-- **Add Contact:** Add a new contact with a name and phone number.
-- **Update Contact:** Modify existing contact information.
-- **Delete Contact:** Remove a contact from the list.
+- **View Contacts Example:** ```curl -k https://localhost/contacts ```
+- **Add Contact Example:** ```curl -k -X POST https://localhost/contacts \ -H 'Content-Type: application/json' \ -d {"id":3 "name":"John Doe", "number":+35199999999 }```
+- **Update Contact Example:** ```curl -k -X PUT https://localhost/contacts/3 \ -H 'Content-Type: application/json' \ -d {"id":3 "name":"John Doe", "number":+35199999999 }```
+- **Delete Contact Example:** ```curl -k -X DELETE https://localhost/contacts/3```
 - **Secure Communication:** Uses SSL for secure communication between the frontend and backend.
 - **Scalable Backend:** Backend service can be scaled to handle increased load.
 
@@ -51,22 +51,16 @@ This project is a simple Contact Management web application that allows users to
     cd ../..
     ```
 
-    This script generates 
-
-server.key
-
- and 
-
-server.crt
-
- files required for SSL.
+    This script generates server.key and server.crt files required for SSL.
 
 3. **Build and Run Containers:**
 
     Use Docker Compose to build and start the containers.
 
     ```bash
+
     docker-compose up --build
+    
     ```
 
     - `--build`: Rebuild images if the Dockerfile has changed.
@@ -76,7 +70,9 @@ server.crt
     Check if the containers are running.
 
     ```bash
+
     docker-compose ps
+    
     ```
 
 ## Usage
@@ -216,7 +212,9 @@ The backend service is configured to run multiple instances for better performan
     To scale the backend service, use:
 
     ```bash
+
     docker-compose up -d --scale backend=5
+    
     ```
 
     This command scales the backend service to 5 instances.
@@ -229,19 +227,19 @@ The backend service is configured to run multiple instances for better performan
 
 nginx.conf
 
- to allow `PUT` and `DELETE` methods.
+  to allow `PUT` and `DELETE` methods.
 
 - **SSL Certificate Issues:**
 
     If encountering SSL certificate errors, ensure that the certificates are correctly generated and paths are correctly specified in 
 
-nginx.conf
+    nginx.conf
 
-.
+    .
 
-    ```bash
-    docker logs nginx_lb
-    ```
+        ```bash
+        docker logs nginx_lb
+        ```
 
 - **Container Issues:**
 
