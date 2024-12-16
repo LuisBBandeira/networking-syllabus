@@ -19,7 +19,16 @@ services:
       - "5000"
     networks:
       - back_net
-    scale: 3
+    scale: 2
+
+  web-busy:
+    image: busybox
+    command: sleep infinity
+    expose:
+      - 1234
+    networks:
+      - front_net
+      
 
 networks:
   front_net:
